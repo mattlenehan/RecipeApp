@@ -5,10 +5,13 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
@@ -33,6 +36,7 @@ class MainActivity : AppCompatActivity(){
                 .fillMaxWidth()
                 .fillMaxHeight()
                 .background(color = Color(0xFFF2F2F2))
+                .padding(all = 16.dp)
         ) {
             item {
                 Image(
@@ -43,12 +47,27 @@ class MainActivity : AppCompatActivity(){
                 )
             }
             item {
-                Text(
-                    text = "Happy Meal",
-                    style = TextStyle(
-                        fontSize = 26.sp
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = "Happy Meal",
+                        style = TextStyle(
+                            fontSize = 26.sp
+                        )
                     )
-                )
+
+                    Text(
+                        text = "$5.99",
+                        style = TextStyle(
+                            color = Color(0xFF85bb65),
+                            fontSize = 17.sp
+                        ),
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    )
+                }
             }
             item {
                 Spacer(modifier = Modifier.padding(top = 8.dp))
@@ -65,13 +84,18 @@ class MainActivity : AppCompatActivity(){
                 Spacer(modifier = Modifier.padding(top = 8.dp))
             }
             item {
-                Text(
-                    text = "$5.99",
-                    style = TextStyle(
-                        color = Color(0xFF85bb65),
-                        fontSize = 17.sp
-                    )
-                )
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    Button(
+                        onClick = {},
+                        modifier = Modifier.align(Alignment.CenterVertically)
+                    ) {
+                        Text(text = "Order Now")
+                    }
+                }
             }
         }
     }
